@@ -1,3 +1,4 @@
+%%writefile src/ds_web_crawl_kbaseball.py
 # coding: utf-8
 import requests
 import lxml.etree
