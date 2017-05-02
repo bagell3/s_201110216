@@ -34,9 +34,9 @@ def saveFile(_fname,_data):
     fp.write(_data+"\n")
 
 def doIt():
-    keyPath=os.path.join(os.getcwd(), 'src', 'key.properties')
-    key=mylib.getKey(keyPath)  
-    _key=key['dataseoul'] #KEY='73725.....'
+    keyPath=os.path.join(os.getcwd(),'key.properties')
+    key=mylib.getKey(keyPath)
+    _key=str(key['gokr'])
     _url='http://openAPI.seoul.go.kr:8088'
     _type='json'
     _service='CardSubwayStatisticsService'
@@ -49,6 +49,7 @@ def doIt():
     while _iter<_maxIter:
         _api=os.path.join(_url,_key,_type,_service,str(_start_index),str(_end_index),_use_mon)
         #print _api
+        _api = _api.replace("\\",'/')
         r=requests.get(_api)
         _json=r.json()
         print _json
